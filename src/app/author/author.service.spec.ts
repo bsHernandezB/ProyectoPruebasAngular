@@ -1,18 +1,18 @@
 /* tslint:disable:no-unused-variable */
 
-import { TestBed, async, inject } from '@angular/core/testing';
-import { BookService } from './book.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { TestBed, async, inject } from '@angular/core/testing';
+import { AuthorService } from './author.service';
 
-describe('Service: Book', () => {
+describe('Service: Author', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [BookService]
+      providers: [AuthorService]
     });
   });
 
-  it('should ...', inject([BookService], (service: BookService) => {
+  it('should ...', inject([AuthorService], (service: AuthorService) => {
     expect(service).toBeTruthy();
   }));
 });

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../book';
+import { BookDetail } from '../book-detail';
 import { BookService } from '../book.service';
-import { BookDetail } from '../bookDetail';
 
 @Component({
   selector: 'app-book-list',
@@ -10,15 +10,15 @@ import { BookDetail } from '../bookDetail';
 })
 export class BookListComponent implements OnInit {
 
+  books: Array<BookDetail> = [];
   selected: Boolean = false;
   selectedBook!: BookDetail;
-  books: Array<BookDetail> = [];
 
   constructor(private bookService: BookService) { }
 
   getBooks(): void {
-    this.bookService.getBooks().subscribe((books) => {
-      this.books = books;
+    this.bookService.getBooks().subscribe({next: books =>
+      this.books = books , error: e => console.error(e)
     });
   }
 
@@ -26,6 +26,7 @@ export class BookListComponent implements OnInit {
     this.selected = true;
     this.selectedBook = book;
   }
+
 
   ngOnInit() {
     this.getBooks();
